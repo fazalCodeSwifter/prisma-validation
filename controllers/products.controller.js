@@ -3,18 +3,6 @@ import db from "../db/db.js";
 export const createProduct = async (req, res) => {
   const { title, description, price, imageURL } = req.body;
   try {
-    if (!title || !description || !price || !imageURL) {
-      return res.status(400).json({
-        success: false,
-        message: "all feilds are required!",
-      });
-    }
-    if (typeof price !== "number") {
-      return res.status(400).json({
-        success: false,
-        message: "price must be number only!",
-      });
-    }
 
     const createProduct = await db.$transaction([
       db.product.create({
@@ -105,19 +93,6 @@ export const updateProduct = async (req, res) => {
   const { title, description, price, imageURL } = req.body;
   const { id } = req.params;
   try {
-    if (!title || !description || !price || !imageURL) {
-      return res.status(400).json({
-        success: false,
-        message: "all feilds are required!",
-      });
-    }
-    if (typeof price !== "number") {
-      return res.status(400).json({
-        success: false,
-        message: "price must be number only!",
-      });
-    }
-
     const updatedProduct = await db.$transaction([
       db.product.update({
         where: {

@@ -4,14 +4,7 @@ import GenrateToken from "../utils/genrateToken.utils.js";
 
 export const registerController = async (req, res) => {
   const { username, email, password } = req.body;
-
   try {
-    if (!username || !email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "all feilds are required!",
-      });
-    }
 
     const existUser = await db.user.findFirst({
       where: {
@@ -53,13 +46,6 @@ export const loginController = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    if (!email || !password) {
-      return res.status(400).json({
-        success: false,
-        message: "all feilds are required!",
-      });
-    }
-
     const existUser = await db.user.findFirst({
       where: {
         email,

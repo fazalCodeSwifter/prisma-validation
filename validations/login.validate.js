@@ -1,12 +1,6 @@
 import { body } from "express-validator";
 
-export const createRegisterValidate = [
-  body("username")
-    .notEmpty()
-    .withMessage("username must be required")
-    .bail()
-    .isLength({ min: 3 })
-    .withMessage("username must be at least 3 characters required"),
+export const createLoginValidate = [
 
   body("email")
     .notEmpty()
@@ -14,7 +8,6 @@ export const createRegisterValidate = [
     .bail()
     .isEmail()
     .withMessage("Enter a valid Email.")
-    .bail()
     .normalizeEmail(),
 
   body("password")

@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config({ path: "./.env" });
 import express from "express";
 import cookieParser from "cookie-parser";
 import authRoute from "./routes/auth.routes.js";

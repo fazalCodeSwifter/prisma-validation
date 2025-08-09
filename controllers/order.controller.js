@@ -4,15 +4,6 @@ export const createOrder = async (req, res) => {
   const { id } = req.user;
   try {
     const { orders } = req.body;
-
-    if (!Array.isArray(orders) || !orders.length) {
-      return res.status(400).json({
-        success: false,
-        message:
-          "Order data must be a valid Array required into this feilds are required! product_id, quantity",
-      });
-    }
-
     const createdOrder = await db.$transaction(async (transaction) => {
       const order = await transaction.order.create({
         data: {
